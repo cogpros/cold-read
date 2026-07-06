@@ -124,6 +124,21 @@ the one non-negotiable in the skill.
 - Emit a completion signal to whatever event bus or run log your stack uses, carrying at
   minimum: artifact, catch count (replicated vs singleton), coldness verdict, and
   whether the run was protocol-grade.
+## Leak channels (measured in run 1, 2026-07-05 — mitigations wired, one open)
+
+Run 1's manipulation checks caught the blind leaking through three channels; both agents
+reconstructed the comparison setup (steer-clean — verdicts held, calibrated down):
+
+1. **The exclusion line** ("ignore HANDOFF-*") announced what it hid. FIXED v1.1:
+   relocate the artifact to a clean scratch location; never name exclusions in the prompt.
+2. **Lab-coat framing** ("no prior context, on purpose") — quoted by both agents as the
+   tell. FIXED v1.1: template opener rewritten as an ordinary work request.
+3. **The skill's own registry entry** — subagents inherit the session's skill list, and
+   /cold-read's description describes this exact protocol. OPEN: real fix is clean-room
+   dispatch (`claude -p` with an isolated config dir — no skills, no identity files, no
+   memory). Until built, expect "suspected" coldness as the realistic ceiling and let the
+   probe measure the residue — that's what it's for.
+
 ## Known limitations
 
 - **The operator is usually contaminated** and still owns the final read. The ledger
