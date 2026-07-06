@@ -14,7 +14,7 @@ compatibility: >
   Runtime-agnostic protocol; scaffold script requires bash + shasum (macOS/Linux).
   Cold agents need any subagent/fan-out mechanism. Tested with Claude Code.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "dustinpollock"
   category: "product-verification"
 ---
